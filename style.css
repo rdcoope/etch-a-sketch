@@ -1,0 +1,16 @@
+body{
+    background-color: darkkhaki;
+}
+#grid {
+    border: 2px dotted red;
+    width: 800px;
+    height: 800px;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 3px;
+}
+.blank{
+    border: 1px black solid;
+    background-color: aliceblue;
+}
