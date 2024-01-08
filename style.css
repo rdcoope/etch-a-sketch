@@ -8,9 +8,17 @@ body{
     background-color: cadetblue;
     display: flex;
     justify-content: space-evenly;
-    gap: 3px;
+    flex-direction: column;
+    
 }
 .blank{
     border: 1px black solid;
-    background-color: aliceblue;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.horizontal{
+    border: 1px black solid;
+    background-color: white;
 }
