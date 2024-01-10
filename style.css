@@ -27,3 +27,6 @@ body{
 .horizontal:hover{
     background-color: black;
 }
+.clicked {
+    background-color: red;
+}
