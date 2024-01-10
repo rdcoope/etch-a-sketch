@@ -1,6 +1,9 @@
 //create the grid
 const grid = document.querySelector('#grid');
 const gridSize = document.querySelector('#gridSize')
+const random = document.querySelector('#randomize')
+const erase = document.querySelector('#erase')
+
 
 function generateGrid(count) {
     console.log('the grid count is: ' + count + ' x ' + count)
@@ -21,11 +24,12 @@ function generateGrid(count) {
     
         //console.log(i)
         }
-    
+        click()
+       // randomize()
     }
     
 
-let count = 8
+let count = 16
 generateGrid(count)
 
 
@@ -45,27 +49,46 @@ gridSize.addEventListener('click', () => {
 })
 
 
-const boxes = document.querySelectorAll('.horizontal')
-console.log('box count is: ' + boxes.length)
-console.log(boxes)
-
-for (let e = 0; (e) < boxes.length; e ++){
-
-    let rand = Math.floor(Math.random()*256)
-    let rand2 = Math.floor(Math.random()*256)
-    let rand3 = Math.floor(Math.random()*256)
+function randomize(){
+    const boxes = document.querySelectorAll('.horizontal')
+    console.log('box count is: ' + boxes.length)
+    //console.log(boxes)
 
 
-    boxes[e].style['background-color'] = "rgb(" + rand + "," + rand2  + "," + rand3 + ")"
-    boxes[e].textContent = 'RGB: ' + rand + "," + rand2 + "," + rand3 + ")"
+    for (let e = 0; (e) < boxes.length; e ++){
 
+        let rand = Math.floor(Math.random() * 256)
+        let rand2 = Math.floor(Math.random() * 256)
+        let rand3 = Math.floor(Math.random() * 256)
 
-    /*console.log(rand)
-    console.log(rand2)
-    console.log(rand3)
-    console.log(boxes[e])  
-*/
+        boxes[e].addEventListener('click', () => {
+        boxes[e].style['background-color'] = "rgb(" + rand + "," + rand2 + "," + rand3 + ")"
+        //boxes[e].textContent = 'RGB: ' + rand + "," + rand2 + "," + rand3 + ")"
+        })
+
+    //    console.log(rand)
+    //    console.log(rand2)
+    //    console.log(rand3)
+    //    console.log(boxes[e])  
+    
+    }
 }
+function click(color) {
+    const box = document.querySelectorAll('.horizontal')
+    //console.log(box)
+    for (let i = 0; i < box.length; i++){
+        box[i].addEventListener('click', () => {
+            console.log(color)
+            box[i].removeAttribute('style')
+            box[i].setAttribute('class', 'clicked horizontal')
+            //box[i].textContent = 'Clicked'
+        })
+    }
+}
+//click()
 
-
+random.addEventListener('click', randomize())
+erase.addEventListener('click', () => {
+    
+})
 
