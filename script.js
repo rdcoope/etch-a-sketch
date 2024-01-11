@@ -3,7 +3,7 @@ const grid = document.querySelector('#grid');
 const gridSize = document.querySelector('#gridSize')
 const random = document.querySelector('#randomize')
 const erase = document.querySelector('#erase')
-
+const defaultButton = document.querySelector('#defaultButton')
 
 function generateGrid(count) {
     console.log('the grid count is: ' + count + ' x ' + count)
@@ -24,7 +24,7 @@ function generateGrid(count) {
     
         //console.log(i)
         }
-        click()
+        click(defaultColor())
        // randomize()
     }
     
@@ -73,22 +73,59 @@ function randomize(){
     
     }
 }
-function click(color) {
-    const box = document.querySelectorAll('.horizontal')
-    //console.log(box)
-    for (let i = 0; i < box.length; i++){
-        box[i].addEventListener('click', () => {
-            console.log(color)
-            box[i].removeAttribute('style')
-            box[i].setAttribute('class', 'clicked horizontal')
-            //box[i].textContent = 'Clicked'
+function defaultColor() {
+        const boxes = document.querySelectorAll('.horizontal')
+    
+        for (let e = 0; e < boxes.length; e++){
+            boxes[e].addEventListener('click', () => {
+            boxes[e].style ['background-color'] = 'black'
+            
+            })
+    }
+}
+function white() {
+    const boxes = document.querySelectorAll('.horizontal')
+
+    for (let e = 0; e < boxes.length; e++){
+        boxes[e].addEventListener('click', () => {
+        boxes[e].style ['background-color'] = 'white'
         })
     }
 }
+function click(color) {
+    const box = document.querySelectorAll('.horizontal')
+
+
+
+
+    //console.log(box)
+    for (let i = 0; i < box.length; i++){
+        box[i].addEventListener('click', () => {
+            box[i].setAttribute('class', 'horizontal')
+            switch (color) {
+                case 'random': box[i].setAttribute('style', 'background-color: ' + randomize())
+                    return;
+                case 'white': box[i].setAttribute('style', 'background-color: ' + white())
+                    return;
+                case 'defaultColor': box[i].setAttribute('style', defaultColor())
+            }
+        })
+    }
+    return
+}
 //click()
 
-random.addEventListener('click', randomize())
-erase.addEventListener('click', () => {
-    
+random.addEventListener('click', () => {
+    console.log('Random clicked')
+    click('random')
 })
+erase.addEventListener('click', () => {
+    console.log('Erase')
+    click('white')
+})
+defaultButton.addEventListener('click', () => {
+    console.log('Default Color')
+    click('defaultColor')
+})
+
 
